@@ -1,0 +1,26 @@
+CREATE DATABASE marie;
+USE marie;
+
+CREATE TABLE alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ra VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE materias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE notas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    materia_id INT NOT NULL,
+    p1 FLOAT NOT NULL,
+    p2 FLOAT NOT NULL,
+    p3 FLOAT DEFAULT NULL,
+    media FLOAT DEFAULT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id),
+    FOREIGN KEY (materia_id) REFERENCES materias(id)
+);
+
